@@ -1,6 +1,6 @@
 {
   "name": "soweak",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "OWASP-aligned security middleware framework for LLM applications. Defense at every boundary: input, retrieval, tool call, output, stream. Works in Node, React, Angular, browsers.",
   "keywords": [
     "owasp",
