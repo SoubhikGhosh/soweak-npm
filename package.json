@@ -24,13 +24,13 @@
   ],
   "license": "Apache-2.0",
   "author": "soweak contributors",
-  "homepage": "https://github.com/soweak-ai/soweak-npm#readme",
+  "homepage": "https://github.com/SoubhikGhosh/soweak-npm#readme",
   "bugs": {
-    "url": "https://github.com/soweak-ai/soweak-npm/issues"
+    "url": "https://github.com/SoubhikGhosh/soweak-npm/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/soweak-ai/soweak-npm.git"
+    "url": "https://github.com/SoubhikGhosh/soweak-npm.git"
   },
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",

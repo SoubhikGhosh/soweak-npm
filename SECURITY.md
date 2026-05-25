@@ -15,7 +15,7 @@ If you believe you have found a security issue in `soweak`, please **do not
 open a public issue**. Instead, email the maintainers using GitHub's
 security advisory flow:
 
-1. Open [https://github.com/soweak-ai/soweak-npm/security/advisories/new](https://github.com/soweak-ai/soweak-npm/security/advisories/new).
+1. Open [https://github.com/SoubhikGhosh/soweak-npm/security/advisories/new](https://github.com/SoubhikGhosh/soweak-npm/security/advisories/new).
 2. Describe:
    - the affected component (e.g. `sanitizeHtml`, `secureFetch`, a specific
      pattern pack);

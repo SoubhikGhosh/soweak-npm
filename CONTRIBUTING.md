@@ -9,7 +9,7 @@ By participating you agree to abide by the [Code of Conduct](CODE_OF_CONDUCT.md)
 ## Development setup
 
 ```bash
-git clone https://github.com/soweak-ai/soweak-npm.git
+git clone https://github.com/SoubhikGhosh/soweak-npm.git
 cd soweak-npm
 npm install
 npm run check    # typecheck + lint + format + tests
