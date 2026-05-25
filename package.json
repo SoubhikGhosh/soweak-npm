@@ -1,0 +1,177 @@
+{
+  "name": "soweak",
+  "version": "0.1.0",
+  "description": "OWASP-aligned security middleware framework for LLM applications. Defense at every boundary: input, retrieval, tool call, output, stream. Works in Node, React, Angular, browsers.",
+  "keywords": [
+    "owasp",
+    "owasp-llm",
+    "llm",
+    "ai-security",
+    "prompt-injection",
+    "jailbreak",
+    "dlp",
+    "guardrails",
+    "ai-safety",
+    "openai",
+    "anthropic",
+    "langchain",
+    "rag",
+    "react",
+    "angular",
+    "nodejs",
+    "browser",
+    "typescript"
+  ],
+  "license": "Apache-2.0",
+  "author": "soweak contributors",
+  "homepage": "https://github.com/soweak-ai/soweak-npm#readme",
+  "bugs": {
+    "url": "https://github.com/soweak-ai/soweak-npm/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/soweak-ai/soweak-npm.git"
+  },
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "default": "./dist/esm/index.js"
+    },
+    "./node": {
+      "types": "./dist/types/node/index.d.ts",
+      "node": {
+        "import": "./dist/esm/node/index.js",
+        "require": "./dist/cjs/node/index.js"
+      },
+      "default": "./dist/esm/node/index.js"
+    },
+    "./detectors": {
+      "types": "./dist/types/detectors/index.d.ts",
+      "import": "./dist/esm/detectors/index.js",
+      "require": "./dist/cjs/detectors/index.js"
+    },
+    "./enforcers": {
+      "types": "./dist/types/enforcers/index.d.ts",
+      "import": "./dist/esm/enforcers/index.js",
+      "require": "./dist/cjs/enforcers/index.js"
+    },
+    "./agent": {
+      "types": "./dist/types/agent/index.d.ts",
+      "import": "./dist/esm/agent/index.js",
+      "require": "./dist/cjs/agent/index.js"
+    },
+    "./budget": {
+      "types": "./dist/types/budget/index.d.ts",
+      "import": "./dist/esm/budget/index.js",
+      "require": "./dist/cjs/budget/index.js"
+    },
+    "./rag": {
+      "types": "./dist/types/rag/index.d.ts",
+      "import": "./dist/esm/rag/index.js",
+      "require": "./dist/cjs/rag/index.js"
+    },
+    "./grounding": {
+      "types": "./dist/types/grounding/index.d.ts",
+      "import": "./dist/esm/grounding/index.js",
+      "require": "./dist/cjs/grounding/index.js"
+    },
+    "./streaming": {
+      "types": "./dist/types/streaming/index.d.ts",
+      "import": "./dist/esm/streaming/index.js",
+      "require": "./dist/cjs/streaming/index.js"
+    },
+    "./output": {
+      "types": "./dist/types/output/index.d.ts",
+      "import": "./dist/esm/output/index.js",
+      "require": "./dist/cjs/output/index.js"
+    },
+    "./adapters/openai": {
+      "types": "./dist/types/adapters/openai.d.ts",
+      "import": "./dist/esm/adapters/openai.js",
+      "require": "./dist/cjs/adapters/openai.js"
+    },
+    "./adapters/anthropic": {
+      "types": "./dist/types/adapters/anthropic.d.ts",
+      "import": "./dist/esm/adapters/anthropic.js",
+      "require": "./dist/cjs/adapters/anthropic.js"
+    },
+    "./adapters/fetch": {
+      "types": "./dist/types/adapters/fetch.d.ts",
+      "import": "./dist/esm/adapters/fetch.js",
+      "require": "./dist/cjs/adapters/fetch.js"
+    },
+    "./ml": {
+      "types": "./dist/types/ml/index.d.ts",
+      "import": "./dist/esm/ml/index.js",
+      "require": "./dist/cjs/ml/index.js"
+    },
+    "./config": {
+      "types": "./dist/types/config/index.d.ts",
+      "import": "./dist/esm/config/index.js",
+      "require": "./dist/cjs/config/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "SECURITY.md"
+  ],
+  "scripts": {
+    "build": "npm run build:clean && npm run build:cjs && npm run build:esm && npm run build:types && npm run build:pkgjson",
+    "build:clean": "rm -rf dist",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:types": "tsc -p tsconfig.types.json",
+    "build:pkgjson": "node scripts/postbuild.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:browser": "vitest run --config vitest.browser.config.ts",
+    "test:dist": "node scripts/smoke-test.mjs",
+    "lint": "eslint . --ext .ts,.tsx",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "check": "npm run typecheck && npm run lint && npm run format:check && npm run test",
+    "prepublishOnly": "npm run build && npm run test:dist",
+    "pack:check": "npm pack --dry-run"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "sideEffects": false,
+  "peerDependencies": {
+    "@anthropic-ai/sdk": ">=0.34.0",
+    "openai": ">=4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@anthropic-ai/sdk": {
+      "optional": true
+    },
+    "openai": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.57.0",
+    "happy-dom": "^14.0.0",
+    "prettier": "^3.2.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.4.0",
+    "vitest": "^1.4.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
+}
