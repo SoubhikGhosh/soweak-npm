@@ -5,27 +5,41 @@ on:
     tags:
       - "v*"
 
+# Trusted Publishing (OIDC): no NPM_TOKEN needed.
+# id-token: write lets npm verify this workflow with the registry.
 permissions:
   contents: read
-  id-token: write # required for npm provenance
+  id-token: write
 
 jobs:
   publish:
     runs-on: ubuntu-latest
+    # Optional but recommended: gate publishes behind a GitHub Environment so
+    # they require an approver / restricted branches. Configure under
+    # Settings → Environments → New environment → "npm-publish".
+    environment: npm-publish
+
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
           registry-url: "https://registry.npmjs.org"
           cache: npm
 
+      # Trusted Publishing requires npm >= 11.5.1. setup-node ships with
+      # an older npm by default, so we upgrade.
+      - name: Upgrade npm for trusted publishing
+        run: npm install -g npm@latest
+
       - run: npm ci
       - run: npm run check
       - run: npm run build
       - run: npm run test:dist
 
-      - name: Publish (with provenance)
-        run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # No NODE_AUTH_TOKEN needed — npm exchanges the OIDC token from
+      # GitHub for a short-lived publish token automatically.
+      # Provenance is implicit with trusted publishing.
+      - name: Publish to npm (Trusted Publishing + provenance)
+        run: npm publish --access public
